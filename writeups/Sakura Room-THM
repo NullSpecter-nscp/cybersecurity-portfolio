@@ -1,0 +1,52 @@
+# 🌸 TryHackMe – Sakura Room
+
+## 🧠 Challenge Overview
+An OSINT-themed room where you analyze provided image files and metadata to track a cybercriminal through publicly accessible intelligence.
+
+---
+
+### Task 2 – Tip-off
+- Analyzed the provided SVG image (`sakurapwnedletter.svg`) using `exiftool` or by inspecting the SVG source.
+- Found the `Export-Filename` tag revealing a Linux file path including the attacker’s username:  
+  **SakuraSnowAngelAiko** :contentReference[oaicite:3]{index=3}
+
+---
+
+### Task 3 – Reconnaissance
+- Searched the username online to discover additional profiles.
+- Found a GitHub account containing a PGP public key.
+- Decoded the PGP key (via `gpg --show-keys`) to extract the email:  
+  **SakuraSnowAngel83@protonmail.com** and the real name **Aiko Abe** (using LinkedIn profile links). :contentReference[oaicite:4]{index=4}
+
+---
+
+### Task 4 – Unveil
+- Explored the attacker’s GitHub `ETH` repository and found a mining script.
+- Checked the commit history to uncover the Ethereum wallet address:  
+  `0xa102397dbeeBeFD8cD2F73A89122fCdB53abB6ef` and confirmed they mined through **Ethermine** on Jan 23, 2021.
+- Found they also exchanged **Tether** (USDT). :contentReference[oaicite:5]{index=5}
+
+---
+
+### Task 5 – Taunt & Homebound
+- Analyzed a Twitter/X screenshot showing the attacker using a new handle: **@SakuraLoverAiko**.
+- From tweets containing WiFi SSID credentials, used Tor browser + DeepPaste onion service to locate their WiFi SSID.
+- Looked up that SSID via Wigle to find the **BSSID** and approximate location. :contentReference[oaicite:6]{index=6}
+
+---
+
+### Task 6 – Deduce Final Location
+- Geo-analyzed submitted photos of landscapes and cherry blossom scenery to estimate travel origin.
+- Identified closest airports: DCA (departure), HND (last layover), and deduced lake: **Lake Inawashiro**.
+- Concluded the attacker likely considers **Hirosaki, Japan** as home. :contentReference[oaicite:7]{index=7}
+
+---
+
+## 📝 Lessons Learned
+- Metadata in images can reveal critical OPSEC flaws.
+- Username reuse helps uncover linked profiles across platforms.
+- PGP keys can expose personal email and identity.
+- Public blockchain tools reveal transaction details like wallet activities and pools.
+- Open platforms like Wigle allow geolocation via SSID/BSSID data.
+- OSINT integrates passive techniques—no direct contact needed.
+
