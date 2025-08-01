@@ -1,0 +1,23 @@
+# 🍃 TryHackMe – Neighbour Room
+
+## 🧠 Challenge Description
+An easy beginner web challenge demonstrating IDOR (Insecure Direct Object Reference). It’s a basic login service where the goal is to access your neighbor’s profile page.
+
+## 🔍 Approach
+- 🚪 Visited the machine URL via AttackBox.
+- Pressed `Ctrl+U` (view page source) to find hidden guest credentials in HTML comments.  
+  Guest account: `guest:guest` :contentReference[oaicite:1]{index=1}
+- Logged in as guest, then observed the URL: `profile.php?user=guest`.
+
+## 💡 Exploiting the IDOR
+- Changed the URL parameter from `user=guest` to `user=admin`.
+- The web app responded by showing the admin dashboard/flag page. :contentReference[oaicite:2]{index=2}
+
+## 🚩 Outcome
+✅ Accessed the neighbor’s/admin profile page and retrieved the flag.
+
+## 📝 Lessons Learned
+- HTML comments can expose hidden credentials.
+- Unvalidated URL parameters can lead to IDOR vulnerabilities.
+- Always validate or sanitize input—even seemingly harmless ones.
+
